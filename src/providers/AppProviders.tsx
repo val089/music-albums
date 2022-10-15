@@ -1,4 +1,10 @@
 import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
+import { Provider } from 'react-redux';
+import { store } from '../store';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+const persistor = persistStore(store);
 
 type AppProvidersProps = {
   children: React.ReactNode;
@@ -6,7 +12,11 @@ type AppProvidersProps = {
 
 export const AppProviders = ({ children }: AppProvidersProps) => (
   <ChakraProvider theme={theme}>
-    <ColorModeScript />
-    {children}
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ColorModeScript />
+        {children}
+      </PersistGate>
+    </Provider>
   </ChakraProvider>
 );

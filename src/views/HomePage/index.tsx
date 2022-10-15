@@ -1,8 +1,12 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../../components/ColorModeSwitcher';
 import { Form } from '../../components/Form';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import { FavMusicList } from '../../components/FavMusicList';
 
 export const HomePage = () => {
+  const albums = useAppSelector((state) => state.albums.albums);
+
   return (
     <Grid
       templateAreas={`"header header"
@@ -21,7 +25,7 @@ export const HomePage = () => {
         <Form />
       </GridItem>
       <GridItem pl="2" bg="green.300" area={'main'}>
-        Main
+        <FavMusicList albums={albums} />
       </GridItem>
     </Grid>
   );
