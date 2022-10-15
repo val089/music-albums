@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import albumsReducer from './slices/albums';
+import localeReducer from './slices/locale';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
@@ -11,6 +12,7 @@ const persistConfig = {
 
 export const rootReducers = combineReducers({
   albums: albumsReducer,
+  locale: localeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
