@@ -8,7 +8,7 @@ import { I18n } from '../../translations/I18n';
 
 export const Header = () => {
   const dispatch = useAppDispatch();
-  const { albums, locale } = useAppSelector((state) => state);
+  const { locale } = useAppSelector((state) => state);
 
   const handleChangeLocale = (option: Locale) => {
     dispatch(changeLocale({ locale: option }));
