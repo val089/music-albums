@@ -1,22 +1,34 @@
 import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
-import { Provider } from 'react-redux';
-import { store } from '../store';
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
+import { useAppSelector } from '../hooks/reduxHooks';
+import { IntlProvider, ReactIntlErrorCode } from 'react-intl';
+import messages from '../translations/messages';
 
-const persistor = persistStore(store);
+// following method added due to error: [Error: [@formatjs/intl Error MISSING_DATA]
+const onError = (e: any) => {
+  if (e.code === ReactIntlErrorCode.MISSING_DATA) {
+    return;
+  }
+  console.error(e);
+};
 
 type AppProvidersProps = {
   children: React.ReactNode;
 };
 
-export const AppProviders = ({ children }: AppProvidersProps) => (
-  <ChakraProvider theme={theme}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+export const AppProviders = ({ children }: AppProvidersProps) => {
+  const { locale } = useAppSelector((state) => state.locale);
+
+  return (
+    <ChakraProvider theme={theme}>
+      <IntlProvider
+        messages={messages[locale]}
+        locale={locale}
+        defaultLocale="pl"
+        onError={onError}
+      >
         <ColorModeScript />
         {children}
-      </PersistGate>
-    </Provider>
-  </ChakraProvider>
-);
+      </IntlProvider>
+    </ChakraProvider>
+  );
+};
