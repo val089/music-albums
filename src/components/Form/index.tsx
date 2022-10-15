@@ -3,6 +3,8 @@ import { FormErrorMessage, FormLabel, FormControl, Input, Button } from '@chakra
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { addAlbum } from '../../store/slices/albums';
 
 const errorMessage = 'Uzupełnij pole';
 
@@ -23,10 +25,13 @@ export const Form = () => {
     resolver: yupResolver(FormScheme),
   });
 
+  const dispatch = useAppDispatch();
+
   const onSubmit = (values: FormData) => {
     const createdAt = new Date().toLocaleDateString();
     const id = uuidv4();
     console.log({ ...values, createdAt, id });
+    dispatch(addAlbum({ ...values, createdAt, id }));
   };
 
   return (
