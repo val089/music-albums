@@ -8,10 +8,10 @@
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Chakra-ui](https://chakra-ui.com//)
-- [ReactHookForm](https://react-hook-form.com/)
-- [ReactRouterDom](https://reactrouter.com/)
-- [ReduxToolkit](https://redux-toolkit.js.org/)
-- [ReactIntl](https://formatjs.io/docs/getting-started/installation/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Router Dom](https://reactrouter.com/)
+- [Redux Tool kit](https://redux-toolkit.js.org/)
+- [React Intl](https://formatjs.io/docs/getting-started/installation/)
 
 ## Installation
 1. Clone this repo.
