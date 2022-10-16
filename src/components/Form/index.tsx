@@ -41,7 +41,7 @@ export const Form = () => {
         <Input id="albumName" placeholder="Album name" {...register('albumName')} />
         <FormErrorMessage>{!!errors.albumName && errorMessage}</FormErrorMessage>
       </FormControl>
-      <Button mt={4} colorScheme="teal" isLoading={isSubmitting} type="submit">
+      <Button mt={4} bg="secondary" isLoading={isSubmitting} type="submit">
         ADD ALBUM
       </Button>
     </form>

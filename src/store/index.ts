@@ -7,7 +7,6 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: ['apiProductSlice'],
 };
 
 export const rootReducers = combineReducers({
