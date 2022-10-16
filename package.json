@@ -1,11 +1,16 @@
 {
   "name": "music-albums",
   "version": "0.1.0",
+  "homepage": "https://val089.github.io/music-albums",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.11",
     "@chakra-ui/react": "^2.3.5",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
+    "@fontsource/poppins": "^4.5.10",
+    "@hookform/resolvers": "^2.9.9",
+    "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^14.1.0",
@@ -14,14 +19,24 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "framer-motion": "^6.2.9",
+    "lottie-react": "^2.3.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-form": "^7.37.0",
     "react-icons": "^3.0.0",
+    "react-intl": "^6.2.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "redux-persist": "^6.0.0",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4"
+    "uuid": "^9.0.0",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,6 +64,9 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.uniqueid": "^4.0.7",
+    "@types/redux-persist": "^4.3.1",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
     "eslint": "^8.25.0",

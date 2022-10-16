@@ -1,9 +1,16 @@
-import { ColorModeScript } from '@chakra-ui/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { AppProviders } from './providers/AppProviders';
+import { Provider } from 'react-redux';
+import { store } from './store';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+const persistor = persistStore(store);
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Failed to find the root element');
@@ -11,8 +18,15 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <ColorModeScript />
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppProviders>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AppProviders>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
 );
 
