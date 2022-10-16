@@ -1,7 +1,8 @@
-import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { IntlProvider, ReactIntlErrorCode } from 'react-intl';
 import messages from '../translations/messages';
+import { theme } from '../theme';
 
 // following method added due to error: [Error: [@formatjs/intl Error MISSING_DATA]
 const onError = (e: any) => {
