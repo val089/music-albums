@@ -1,21 +1,39 @@
-import { extendTheme, ThemeConfig } from '@chakra-ui/react';
-// import { ButtonStyles as Button } from './components/buttonStyles';
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
 
 const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
+  initialColorMode: 'system',
+  useSystemColorMode: true,
 };
 
 const myNewTheme = {
   colors: {
-    primary: '#845EC2',
-    secondary: '#FF6F91',
-    highlight: '#00C9A7',
+    primary: '#121212',
+    secondary: '#1ad263',
+    white: '#fff',
+    darkGrey: '#181818',
+    grey1: '#242424',
+    black: '#000000',
+    green1: '#1eb359',
     warning: '#FFC75F',
     danger: '#C34A36',
   },
-  components: {
-    // Button,
+  fonts: {
+    body: `'Poppins', sans-serif`,
+  },
+  styles: {
+    global: {
+      'html, body': {
+        bg: 'primary',
+        color: 'white',
+      },
+    },
+  },
+  breakpoints: {
+    sm: '320px',
+    md: '768px',
+    lg: '960px',
+    xl: '1200px',
+    '2xl': '1536px',
   },
 };
 

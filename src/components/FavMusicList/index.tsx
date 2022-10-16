@@ -1,12 +1,16 @@
 import { AlbumType } from '../../types';
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { deleteAlbum, addToBestAlbums } from '../../store/slices/albums';
+import { deleteAlbum, addToBestAlbums, deleteBestAlbum } from '../../store/slices/albums';
+import { AlbumItem } from '../AlbumItem';
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 type FavMusicListProps = {
   albums: AlbumType[];
+  isGridList?: boolean;
 };
 
-export const FavMusicList = ({ albums }: FavMusicListProps) => {
+export const FavMusicList = ({ albums, isGridList = false }: FavMusicListProps) => {
+  const bestAlbums = useAppSelector((state) => state.albums.bestAlbums);
   const dispatch = useAppDispatch();
 
   const handleDelete = (id: string) => {
@@ -14,24 +18,23 @@ export const FavMusicList = ({ albums }: FavMusicListProps) => {
   };
 
   const addToBest = (id: string) => {
-    dispatch(addToBestAlbums({ id }));
+    const isInBestAlbums = !!bestAlbums.find((item) => item.id === id);
+
+    isInBestAlbums ? dispatch(deleteBestAlbum({ id })) : dispatch(addToBestAlbums({ id }));
   };
 
   return (
-    <div>
+    <>
       {albums?.length > 0 &&
-        albums.map(({ id, albumName, createdAt }) => (
-          <div key={id}>
-            <p>{albumName}</p>
-            <p>{createdAt}</p>
-            <button style={{ background: '#ddd' }} onClick={() => handleDelete(id)}>
-              DELETE
-            </button>
-            <button style={{ background: 'aqua' }} onClick={() => addToBest(id)}>
-              ADD TO BEST
-            </button>
-          </div>
+        albums.map((album) => (
+          <AlbumItem
+            isGridList={isGridList}
+            key={album.id}
+            album={album}
+            handleDelete={() => handleDelete(album.id)}
+            addToBest={() => addToBest(album.id)}
+          />
         ))}
-    </div>
+    </>
   );
 };

@@ -23,7 +23,9 @@ const albumsSlice = createSlice({
     },
     addToBestAlbums: (state, action: PayloadAction<{ id: string }>) => {
       const bestAlbum = state.albums.filter((album) => album.id === action.payload.id);
-      if (bestAlbum) {
+      const isInBestAlbums = !!state.bestAlbums.find((album) => album.id === action.payload.id);
+
+      if (bestAlbum && !isInBestAlbums) {
         state.bestAlbums.push(...bestAlbum);
       }
     },
