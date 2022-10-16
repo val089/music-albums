@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/music-albums/static/js/main.a1a0a01a.js",
+    "main.js": "/music-albums/static/js/main.403b9c76.js",
     "static/js/787.1bf3ed7a.chunk.js": "/music-albums/static/js/787.1bf3ed7a.chunk.js",
     "index.html": "/music-albums/index.html",
-    "main.a1a0a01a.js.map": "/music-albums/static/js/main.a1a0a01a.js.map",
+    "main.403b9c76.js.map": "/music-albums/static/js/main.403b9c76.js.map",
     "787.1bf3ed7a.chunk.js.map": "/music-albums/static/js/787.1bf3ed7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.a1a0a01a.js"
+    "static/js/main.403b9c76.js"
   ]
 }
