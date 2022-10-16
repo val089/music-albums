@@ -27,7 +27,7 @@ export const AppProviders = ({ children }: AppProvidersProps) => {
         defaultLocale="pl"
         onError={onError}
       >
-        <ColorModeScript />
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         {children}
       </IntlProvider>
     </ChakraProvider>
